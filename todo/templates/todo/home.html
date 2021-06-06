@@ -1,4 +1,10 @@
 {% extends "todo/base.html" %}
 {% block content %}
-	<h1>HOMEPAGE</h1>
+	{% for todos in todoitem %}
+		<h2>
+			<p>
+				{{todos.item}} by {{todos.author}} at {{todos.date_created|date:"F d, Y"}}
+			</p>
+		</h2>
+	{% endfor %}
 {% endblock content %}

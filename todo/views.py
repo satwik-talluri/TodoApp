@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from .models import TodoItem
 
 def home(request):
-	return render(request, 'todo/home.html')
+	context = {
+		'todoitem': TodoItem.objects.all(),
+	}
+	return render(request, 'todo/home.html', context)
