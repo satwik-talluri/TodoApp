@@ -27,3 +27,39 @@ ul {
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
 }
+
+.Todo-title {
+  color: #444444;
+}
+
+a.Todo-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.Todo-content {
+  white-space: pre-line;
+}
+
+.Todo-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.Todo-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.Todo-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.Todo-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}

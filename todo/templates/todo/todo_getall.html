@@ -1,0 +1,17 @@
+{% extends "todo/index.html" %}
+{% block content %}
+	{% for items in todoitems %}
+	<div class="content-section d-flex justify-content-center">
+		<article class="media content-section d-flex justify-content-center">
+		  <div class="media-body">
+		    <div class="Todo-metadata">
+		      <a class="mr-2">{{ items.author }}</a>
+		      <small class="text-muted">{{ items.auto_inc_id }}</small>
+		    </div>
+		    <h3><a class="Todo-title">{{ items.item }}</a></h3>
+		    <p class="Todo-content">{{ items.date_created }}</p>
+		  </div>
+		</article>
+	</div>
+	{% endfor %}
+{% endblock content %}

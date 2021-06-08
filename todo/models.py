@@ -8,8 +8,5 @@ class TodoItem(models.Model):
 	item = models.TextField()
 	date_created = models.DateTimeField(auto_now_add=True)
 
-	def __str__(self):
-		return self.auto_inc_id
-
 	def get_absolute_url(self):
 		return ('/')
