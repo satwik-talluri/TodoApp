@@ -1,10 +1,12 @@
 {% extends "todo/index.html" %}
 {% block content %}
 	{% for todos in todoitem %}
-		<h2>
-			<p>
-				{{todos.item}} by {{todos.author}} at {{todos.date_created|date:"F d, Y"}}
-			</p>
-		</h2>
+		{% if user == todos.author %}
+			<h2>
+				<p>
+					{{todos.item}} by {{todos.author}} at {{todos.date_created|date:"F d, Y"}}
+				</p>
+			</h2>
+		{% endif %}
 	{% endfor %}
 {% endblock content %}
