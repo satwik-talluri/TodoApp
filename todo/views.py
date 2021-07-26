@@ -6,11 +6,20 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class TodoListView(ListView):
-	model = TodoItem
-	template_name = 'todo/home.html'
-	context_object_name = 'todoitem'
-	ordering = ['date_created']
+# class TodoListView(ListView):
+# 	model = TodoItem
+# 	template_name = 'todo/home.html'
+# 	context_object_name = 'todoitem'
+# 	ordering = ['auto_inc_id']
+
+@login_required(login_url='login')
+def TodoListView(request):
+
+	items=TodoItem.objects.all().filter(author=request.user)
+	context = {
+		'todoitem': items
+	}
+	return render(request,'todo/home.html',context)
 
 # @method_decorator(login_required, name='todo.views.TodoCreateView')
 class TodoCreateView(LoginRequiredMixin, CreateView):
@@ -38,11 +47,12 @@ def TodoGetView(request):
 
 @login_required(login_url='login')
 def TodoGetAll(request):
-	items=TodoItem.objects.all().filter(author=request.user)
+	if request.user.is_superuser:
+		items=TodoItem.objects.all()
+	else:
+		items=TodoItem.objects.all().filter(author=request.user)
 	context = {
 		'todoitems': items
 	}
-	if request.user.is_superuser:
-		return render(request,'todo/todo_getall.html',context)
-	else:
-		return HttpResponse('Unauthorized', status=401)
+
+	return render(request,'todo/todo_getall.html',context)

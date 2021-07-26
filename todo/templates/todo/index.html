@@ -38,7 +38,26 @@
 		    </div>
 	 	</nav>
 	</header>
-	{% block content %}{% endblock %}
+	<main role="main" class="container">
+	  <div class="row">
+	    <div class="col-md-8">
+	      {% block content %}{% endblock %}
+	    </div>
+	    <div class="col-md-4">
+	      <div class="content-section">
+	        <h3>Our Sidebar</h3>
+	          <ul class="list-group">
+	            <a href="{% url 'todo-getall' %}" class="list-group-item list-group-item-light">Get all Todos</a>
+	            <a href="{% url 'todo-create' %}" class="list-group-item list-group-item-light">Create a Todo</a>
+	          </ul>
+	        </p>
+	      </div>
+
+	      
+	      
+	    </div>
+	  </div>
+	</main>
 
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

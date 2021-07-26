@@ -1,4 +1,5 @@
 {% extends "todo/index.html" %}
+{% load static %}
 {% block content %}
 	<main role="main" class="container">
 	  <div class="row">
@@ -13,22 +14,15 @@
 			{% block TODO %}{% endblock %}
 	    </div>
 	    <div class="col-md-4">
-	      <div class="content-section">
-	          <ul class="list-group">
-	            <a href="{% url 'todo-getall' %}" class="list-group-item list-group-item-light">Get all Todos</a>
-	            <a href="{% url 'todo-create' %}" class="list-group-item list-group-item-light">Create a Todo</a>
-	          </ul>
-	        </p>
-	      </div>
 	      <label for="subject-taught">Get a todo</label>
-	      				<form action="{% url 'todo-get' %}" method="GET">
-                            <select name="ID" class="custom-select d-block w-100" required >
-                                {% for todos in todoitem %}
-                                    <option value={{todos.auto_inc_id}}>{{ todos.auto_inc_id }}</option>
-                                {% endfor %}
-                            </select>
-                            <button type=submit>Get Todo by Id</button>
-                        </form>
+	      	<form action="{% url 'todo-get' %}" method="GET">
+                <select name="ID" class="custom-select d-block w-100" required >
+                    {% for todos in todoitem %}
+                        <option value={{todos.auto_inc_id}}>{{ todos.auto_inc_id }}</option>
+                    {% endfor %}
+                </select>
+                    <button type=submit>Get Todo by Id</button>
+            </form>
 	    </div>
 	  </div>
 	</main>
